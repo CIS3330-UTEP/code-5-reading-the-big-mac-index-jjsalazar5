@@ -38,7 +38,7 @@ def get_the_cheapest_big_mac_price_by_year(year):
         return "No data available"
 
     min_row = df_filtered.loc[df_filtered["dollar_price"].idxmin()]
-    return f"{min_row['name']}({min_row['iso_a3']}): ${min_row['dollar_price']:.2f}"
+    return f"{min_row['name']}({min_row['iso_a3']}): ${format(min_row['dollar_price'], '.2f')}"
 
 def get_the_most_expensive_big_mac_price_by_year(year):
     """
@@ -49,10 +49,11 @@ def get_the_most_expensive_big_mac_price_by_year(year):
         return "No data available"
 
     max_row = df_filtered.loc[df_filtered["dollar_price"].idxmax()]
-    return f"{max_row['name']}({max_row['iso_a3']}): ${max_row['dollar_price']:.2f}"
+    return f"{max_row['name']}({max_row['iso_a3']}): ${format(max_row['dollar_price'], '.2f')}"
 
 if __name__ == "__main__": 
     print("Price in Malaysia (MYS) in 2008:", get_big_mac_price_by_year(2008, "mys")) 
     print("Average price in Malaysia (MYS) overall:", get_big_mac_price_by_country("mys")) 
     print("Cheapest Big Mac in 2008:", get_the_cheapest_big_mac_price_by_year(2008)) 
     print("Most expensive Big Mac in 2003:", get_the_most_expensive_big_mac_price_by_year(2003))  
+
